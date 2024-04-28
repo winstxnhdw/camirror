@@ -1,4 +1,4 @@
-window.onload = async () => {
+document.addEventListener('DOMContentLoaded', async () => {
   const video = document.getElementById('webcam')
 
   video.srcObject = await navigator.mediaDevices.getUserMedia({
@@ -13,4 +13,4 @@ window.onload = async () => {
     video.width = video.videoWidth
     video.height = video.videoHeight
   }
-}
+})
