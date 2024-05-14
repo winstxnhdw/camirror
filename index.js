@@ -1,9 +1,7 @@
-document.addEventListener('DOMContentLoaded', async () => {
-  const video = document.getElementById('webcam')
-
+async function initialiseCamera(video, front = false) {
   video.srcObject = await navigator.mediaDevices.getUserMedia({
-    facingMode: { ideal: 'user' },
     video: {
+      facingMode: front ? 'user' : 'environment',
       width: { ideal: 7680 },
       height: { ideal: 4320 },
     },
@@ -12,5 +10,16 @@ document.addEventListener('DOMContentLoaded', async () => {
   video.onloadedmetadata = () => {
     video.width = video.videoWidth
     video.height = video.videoHeight
+  }
+}
+
+document.addEventListener('DOMContentLoaded', async () => {
+  const video = document.getElementById('webcam')
+  await initialiseCamera(video)
+  let front = false
+
+  video.onclick = async () => {
+    front = !front
+    await initialiseCamera(video, front)
   }
 })
