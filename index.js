@@ -2,8 +2,8 @@ async function initialiseCamera(video, front = false) {
   video.srcObject = await navigator.mediaDevices.getUserMedia({
     video: {
       facingMode: front ? 'user' : 'environment',
-      width: { ideal: 7680 },
-      height: { ideal: 4320 },
+      width: { ideal: Number.MAX_SAFE_INTEGER },
+      height: { ideal: Number.MAX_SAFE_INTEGER },
     },
   })
 
