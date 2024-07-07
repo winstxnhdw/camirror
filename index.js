@@ -23,3 +23,5 @@ document.addEventListener('DOMContentLoaded', async () => {
     await initialiseCamera(video, front)
   }
 })
+
+window.addEventListener('load', () => navigator.serviceWorker.register('/serviceWorker.js'))
